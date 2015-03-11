@@ -4,6 +4,7 @@ import android.content.Context;
 import android.hardware.Camera;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 import java.util.List;
 
@@ -22,12 +23,37 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private Camera.Size mPreviewSize;
     // List of supported preview sizes
     private List<Camera.Size> mSupportedPreviewSizes;
-    // private List
+    // Flash modes supported by this camera
+    private List<String> mSupportedFlashModes;
+    // View holding this camera
+    private View mCameraView;
 
 
-    public CameraPreview(Context context) {
+
+    public CameraPreview(Context context, Camera camera, View cameraView) {
         super(context);
+        // Capture the context
+        mCameraView = cameraView;
+        mContext = context;
+        setCamera(camera);
+    }
 
+    /**
+     * Extract supported preview and flash modes from the camera
+     * @param camera
+     */
+    private void setCamera(Camera camera) {
+        mCamera = camera;
+        mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
+        mSupportedFlashModes = mCamera.getParameters().getSupportedFlashModes();
+        // Set the camera to auto flash mode
+        if (mSupportedFlashModes != null && mSupportedFlashModes.contains(Camera.Parameters.FLASH_MODE_AUTO)) {
+            Camera.Parameters parameters = mCamera.getParameters();
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
+            mCamera.setParameters(parameters);
+        }
+        
+        requestLayout();
     }
 
     @Override
