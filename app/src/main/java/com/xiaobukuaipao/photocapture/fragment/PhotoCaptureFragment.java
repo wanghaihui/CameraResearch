@@ -283,6 +283,7 @@ public class PhotoCaptureFragment extends PhotoCaptureBaseFragment {
 
                 // 此处会发生错误
                 // It is failing because not all devices support arbitrary(任意的) preview sizes
+                // http://stackoverflow.com/questions/3890381/camera-setparameters-failed-in-android
                 mCamera.setParameters(parameters);
 
                 mCamera.startPreview();
