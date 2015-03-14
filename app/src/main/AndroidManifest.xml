@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".PhotoCapture2Activity"
-            android:label="@string/title_activity_photo_capture2" >
+            android:label="@string/title_activity_photo_capture2"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

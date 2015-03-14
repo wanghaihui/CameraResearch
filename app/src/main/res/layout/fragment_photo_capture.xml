@@ -5,15 +5,17 @@
 
     <RelativeLayout android:id="@+id/capture_bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/white">
+        android:background="@color/black">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_capture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"
+            android:scaleType="center"
+            android:background="@drawable/btn_camera_photo_capture"/>
 
     </RelativeLayout>
 
@@ -21,5 +23,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/capture_bottom_layout"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/cc_black">
+
+        <ImageButton android:id="@+id/switch_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/camera_top_bar_switch_camera"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
